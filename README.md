@@ -24,10 +24,8 @@ Create a Dockerfile in a new directory (you can also find this code in the git d
 
 ```docker
 FROM debian:wheezy
-MAINTAINER rjh@amazon.com
 
 RUN apt-get update
-
 RUN apt-get install -y samba nginx openssl git wget curl
 ```
 
@@ -77,7 +75,11 @@ As you can see this container is not very secure. So lesson 1 check whats in tha
 Lets modify your Dockerfile:
 
 ```Dockerfile
+FROM debian:stretch
 
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y samba nginx openssl git wget curl
 
 ```
 
