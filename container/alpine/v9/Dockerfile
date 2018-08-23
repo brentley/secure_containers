@@ -12,6 +12,8 @@ RUN apk update \
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /www
 
+USER www
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
