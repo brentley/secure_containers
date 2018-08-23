@@ -1,0 +1,13 @@
+{
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "syscalls": [
+    {
+      "name": "mkdir",
+      "action": "SCMP_ACT_ERRNO"
+    },
+    {
+      "name": "chown",
+      "action": "SCMP_ACT_ERRNO"
+    }
+  ]
+}

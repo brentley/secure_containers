@@ -1,0 +1,12 @@
+FROM debian:stretch-slim
+
+RUN apt update \
+    && apt upgrade -y \
+    && apt install --no-install-recommends --no-install-suggests -y samba nginx openssl git wget curl \
+    && apt remove --purge --auto-remove -y samba openssl git wget curl \
+    && rm -rf /var/lib/apt/lists/*
+    # Clear up the cache also
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
