@@ -1,8 +1,8 @@
-# Builders Lab: Effecient and Secure Containers
+# Builders Lab: Efficient and Secure Containers
 
 ### Take Aways
 
-In this lab you'll learn best pratices and how use tools to check the security of your containers. You'll also learn how to make your container efficient as a small container size will ultimately give you greater flexibility and faster start times.
+In this lab you'll learn best practices and how use tools to check the security of your containers. You'll also learn how to make your container efficient as a small container size will ultimately give you greater flexibility and faster start times.
 
 ### Requirements
 
@@ -16,7 +16,7 @@ This lab should take about 1 hour.
 
 ## Getting started
 
-We are goign to start off with a basic Dockerfile and improve it along the way, each time making it more secure and eventually we'll look at the efficiency.
+We are going to start off with a basic Dockerfile and improve it along the way, each time making it more secure and eventually we'll look at the efficiency.
 
 Our starting point is going to be ugly and a bad example of a Dockerfile. By the time we finish it'll be better I promise.
 
@@ -29,7 +29,7 @@ RUN apt-get update
 RUN apt-get install -y samba nginx openssl git wget curl
 ```
 
-Now lets build that image by runnign the following commands:
+Now lets build that image by running the following commands:
 
 ```bash
 docker build -t bl_test:v1 .
@@ -53,7 +53,7 @@ Now lets start looking at the security of that container!
 
 ### Scanning: Updates, updates, updates
 
-We are going to use aqua's microscanner project to test this locally and see how we can improve the image. First of all make sure you have it installed and also clone the wrapper repository, you'll need to follow the microscanner registration in order to get your token. I then ran the follwing in my terminal window:
+We are going to use aqua's microscanner project to test this locally and see how we can improve the image. First of all make sure you have it installed and also clone the wrapper repository, you'll need to follow the microscanner registration in order to get your token. I then ran the following in my terminal window:
 
 ```bash
 export MICROSCANNER_TOKEN="YOUR_TOKEN"
@@ -66,7 +66,7 @@ Change into the wrapper repository and run the following command:
 /grabhtml.sh bl_test:v1 > v1.html
 ```
 
-This is going to scan your image :) The output will be saved into a new file called v1.html and if you open that in your browser you should get the following output (or worse if there are new expliots from the time of writing this lab)
+This is going to scan your image :) The output will be saved into a new file called v1.html and if you open that in your browser you should get the following output (or worse if there are new exploits from the time of writing this lab)
 
 ![img/v1.png](img/v1.png)
 
@@ -139,7 +139,7 @@ Selecting previously unselected
 ..
 .
 ```
-Ok so why wouldn't we want this? Well imagine someone has exploited your aplication...... yep they could potentially install anything in that container. So lets lock down the permissons. We are going to add a user called test then tell the container thats what its processes run as.
+Ok so why wouldn't we want this? Well imagine someone has exploited your application...... yep they could potentially install anything in that container. So lets lock down the permissions. We are going to add a user called test then tell the container thats what its processes run as.
 
 ```Dockerfile
 FROM debian:stretch
@@ -209,7 +209,7 @@ The same thing would happen for the chown command and you can bulk out this poli
 
 ### How about in production?????
 
-It depends on your orchastrtor. In fact there is going to be another Builders Lab in this series all about IAM permsions for containers in ECS and Fargate. Stay tunned!
+It depends on your orchestrator. In fact there is going to be another Builders Lab in this series all about IAM permissions for containers in ECS and Fargate. Stay tuned!
 
 ## Efficiency: Whats in a container
 
@@ -338,7 +338,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 bl_test             v7                  deccfd08ccd8        2 minutes ago       105MB
 ```
 
-Much lighter, some extra commands for apt also helped reduce the size. Infact you can see it has less layers by looking at docker inspect for each image:
+Much lighter, some extra commands for apt also helped reduce the size. In fact you can see it has less layers by looking at docker inspect for each image:
 
 ```bash
 docker inspect bl_test:v7
@@ -394,7 +394,7 @@ Note: please stop and remove this container
 
 ### Consider other OS's
 
-Look at alpine linux to start. Its super lightweight. Infact lets build an alpine linux container to run nginx and see how it goes!
+Look at alpine linux to start. Its super lightweight. In fact lets build an alpine linux container to run nginx and see how it goes!
 
 ```Dockerfile
 FROM alpine:latest
@@ -437,7 +437,7 @@ bl_test             v9                  4d0085c761df        2 minutes ago       
 
 ## Taking this further???
 
-Take a look at building scraqtch images [https://hub.docker.com/_/scratch/](https://hub.docker.com/_/scratch/)
+Take a look at building scratch images [https://hub.docker.com/_/scratch/](https://hub.docker.com/_/scratch/)
 
 
 
