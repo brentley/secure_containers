@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk update \
     && apk upgrade \
     && apk add --no-cache nginx bash\
+    && rm -rf /var/cache/apk/* \
     && adduser -D -g 'www' www \
     && mkdir /www \
     && mkdir -p /run/nginx/ \
