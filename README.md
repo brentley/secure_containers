@@ -207,10 +207,6 @@ mkdir: cannot create directory 'moo': Operation not permitted
 
 The same thing would happen for the chown command and you can bulk out this policy to really lock your containers down.
 
-### How about in production?????
-
-It depends on your orchestrator. In fact there is going to be another Builders Lab in this series all about IAM permissions for containers in ECS and Fargate. Stay tuned!
-
 ## Efficiency: Whats in a container
 
 ### Slim down
